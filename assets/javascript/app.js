@@ -53,7 +53,7 @@ function displayEmotionInfo() {
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function(response) {
+    }).then(function(response){
 
         for (var i = 0; i < response.data.length; i++) {
             
@@ -65,25 +65,13 @@ function displayEmotionInfo() {
             var searchDiv = $('<div class= "card" id= "search-item">');
             var rating = response.data[i].rating;
             var p = $('<p>').text('Rating: ' + rating)
+
         }
 
     });
 
 }
     
-
-            //display gif images and ratings
-           // $('#emotion-input').empty();
-           // var emotionDiv = $('<div class= "gifImages" id= "search-item">');
-           // var rating = response.data[i].rating;
-           // var p = $('<p>').text('Rating: ' + rating).css({
-               // "visibility": "visible",
-               // "display": "block"
-           // });
-        //}
-   // }
-
-
         // Creating a div to hold the emotion
         //var emotionDiv = $("<div class='emotion>");
 
