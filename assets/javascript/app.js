@@ -51,9 +51,59 @@ function displayEmotionInfo() {
 
     // Creating an AJAX call for the specific emotion button being clicked
     $.ajax({
-    url: queryURL,
-    method: "GET"
+      url: queryURL,
+      method: "GET"
     }).then(function(response) {
 
+        for (var i = 0; i < response.data.length; i++) {
+            
+            // Creating a div to hold the emotion
+            var emotionDiv = $("<div class='emotion'>");
+
+            //display gif images and ratings
+            $('#emotion-input').empty();
+            var searchDiv = $('<div class= "card" id= "search-item">');
+            var rating = response.data[i].rating;
+            var p = $('<p>').text('Rating: ' + rating)
+        }
+
     });
-};
+
+}
+    
+
+            //display gif images and ratings
+           // $('#emotion-input').empty();
+           // var emotionDiv = $('<div class= "gifImages" id= "search-item">');
+           // var rating = response.data[i].rating;
+           // var p = $('<p>').text('Rating: ' + rating).css({
+               // "visibility": "visible",
+               // "display": "block"
+           // });
+        //}
+   // }
+
+
+        // Creating a div to hold the emotion
+        //var emotionDiv = $("<div class='emotion>");
+
+        // Storing the rating data
+        //var rating = response.data.rating;
+
+        // Creating an element to have the rating displayed
+        //var pOne = $("<p>").text("Rating: " + rating);
+
+        // Displaying the rating
+        //emotionDiv.append(pOne);
+
+        // Retrieving the URL for the gif
+        //var imgURL = response.data.images.fixed_height_downsampled.url;
+
+        // Creating an element to hold the gif
+        //var image = $("<img>").attr("src", imgURL);
+
+        // Appending the image
+        //emotionDiv.append(image);
+
+        // Putting the entire emotion above the previous emotions
+        //$("#movies-view").prepend(movieDiv)
