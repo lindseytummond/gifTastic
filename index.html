@@ -9,19 +9,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <!--stle.css-->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!--jQuery-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!--Google Fonts-->
 
 </head>
+
 <body>
-
-
-
-
+        <div class="container">
+        <h1>Stages of Emotions while Learning to Code</h1>
+        
+        <!--Emotions will get dumped here-->
+        <div id="buttons-view"></div>
+        
+        <form id="emotion-form">
+            <label for="emotion-input">Type a Coding Emotion:</label>
+            <input type="text" id="emotion-input"><br>
+        
+        <!--Button triggers new emotion to be added-->
+            <input id="add-emotion" type="submit" value="Add a Coding Emotion">
+            </form>
+        </div>
     <script src="assets/javascript/app.js"></script>
 </body>
 </html>
