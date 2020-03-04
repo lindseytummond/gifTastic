@@ -60,11 +60,30 @@ function displayEmotionInfo() {
             // Creating a div to hold the emotion
             var emotionDiv = $("<div class='emotion'>");
 
-            //display gif images and ratings
-            $('#emotion-input').empty();
-            var searchDiv = $('<div class= "card" id= "search-item">');
+            //$('#emotion-input').empty();
+            //var searchDiv = $('<div class= "card" id= "search-item">');
+
+            // Storing the gif data
+            var gif = response.data[i].images.fixed_height_still.url;
+
+            // Creating an element to have the gif displayed
+            var pOne = $("<p>").img("Gif: " + gif);
+
+            // Displaying the gif
+            emotionDiv.append(pOne);
+
+
+            // Storing the rating data
             var rating = response.data[i].rating;
-            var p = $('<p>').text('Rating: ' + rating)
+
+            // Creating an element to have the rating displayed
+            var pTwo = $("<p>").text("Rating: " + rating);
+
+            // Displaying the rating
+            emotionDiv.append(pTwo);
+
+
+            
 
         }
 
