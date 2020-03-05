@@ -15,7 +15,7 @@ function renderButtons() {
     // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
     var a = $("<button>");
     // Adding a class
-    a.addClass("movie");
+    a.addClass("emotion");
     // Adding a data-attribute with a value of the emotion at index i
     a.attr("data-name", emotions[i]);
     // Providing the button's text with a value of the emotion at index i
@@ -23,7 +23,7 @@ function renderButtons() {
     // Adding the button to the HTML
     $("#buttons-view").append(a);
     }
-}
+};
 
 // This function handles events where one button is clicked
 $("#add-emotion").on("click", function(event) {
@@ -44,8 +44,8 @@ $("#add-emotion").on("click", function(event) {
 renderButtons();
 
 // displayEmotionInfo function re-renders the HTML to display the appropriate content
-function displayEmotionInfo() {
-
+//function displayEmotionInfo() 
+$(document).on('click', '.emotion', function (){
     var emotion = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=RHuh2HxJ0HyjttXzUCPTpHYqfilmC3Vy&q=" + emotion + "limit=10&offset=0&lang=en";
 
@@ -54,21 +54,23 @@ function displayEmotionInfo() {
       url: queryURL,
       method: "GET"
     }).then(function(response){
-
+        
+        var results = response.data;
         for (var i = 0; i < response.data.length; i++) {
+
+            //$("<p/>").addClass("ratings").text("Rating: " + results[i].rating
+                        //.toUpperCase())
+                        //.prependTo("#gifContainer");
             
             // Creating a div to hold the emotion
             var emotionDiv = $("<div class='emotion'>");
-
-            //$('#emotion-input').empty();
-            //var searchDiv = $('<div class= "card" id= "search-item">');
 
             // Storing the gif data
             var gif = response.data[i].images.fixed_height_still.url;
 
             // Creating an element to have the gif displayed
-            var pOne = $("<p>").img("Gif: " + gif);
-
+            var pOne = $("<img>").attr("src", gif);
+            
             // Displaying the gif
             emotionDiv.append(pOne);
 
@@ -82,6 +84,8 @@ function displayEmotionInfo() {
             // Displaying the rating
             emotionDiv.append(pTwo);
 
+            $("#gifContainer").prepend(emotionDiv);
+
 
             
 
@@ -89,25 +93,9 @@ function displayEmotionInfo() {
 
     });
 
-}
-    
-        // Creating a div to hold the emotion
-        //var emotionDiv = $("<div class='emotion>");
-
-        // Storing the rating data
-        //var rating = response.data.rating;
-
-        // Creating an element to have the rating displayed
-        //var pOne = $("<p>").text("Rating: " + rating);
-
-        // Displaying the rating
-        //emotionDiv.append(pOne);
-
-        // Retrieving the URL for the gif
-        //var imgURL = response.data.images.fixed_height_downsampled.url;
-
-        // Creating an element to hold the gif
-        //var image = $("<img>").attr("src", imgURL);
+});
+        //$('#emotion-input').empty();
+        //var searchDiv = $('<div class= "card" id= "search-item">');
 
         // Appending the image
         //emotionDiv.append(image);
