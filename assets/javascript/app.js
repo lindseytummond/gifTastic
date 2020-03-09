@@ -13,7 +13,7 @@ function renderButtons() {
 
     // Then dynamicaly generating buttons for each emotion in the array.
     // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
-    var a = $("<button>");
+    var a = $("<button>", id ="btn");
     // Adding a class
     a.addClass("emotion");
     // Adding a data-attribute with a value of the emotion at index i
@@ -44,61 +44,50 @@ $("#add-emotion").on("click", function(event) {
 renderButtons();
 
 // displayEmotionInfo function re-renders the HTML to display the appropriate content
-//function displayEmotionInfo() 
+
 $(document).on('click', '.emotion', function (){
     var emotion = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=RHuh2HxJ0HyjttXzUCPTpHYqfilmC3Vy&q=" + emotion + "limit=10&offset=0&lang=en";
-
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=RHuh2HxJ0HyjttXzUCPTpHYqfilmC3Vy&limit=10";
+    
     // Creating an AJAX call for the specific emotion button being clicked
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response){
-        
+        console.log(queryURL);
+
+        console.log(response);
+
         var results = response.data;
         for (var i = 0; i < response.data.length; i++) {
-
-            //$("<p/>").addClass("ratings").text("Rating: " + results[i].rating
-                        //.toUpperCase())
-                        //.prependTo("#gifContainer");
             
-            // Creating a div to hold the emotion
-            var emotionDiv = $("<div class='emotion'>");
-
-            // Storing the gif data
-            var gif = response.data[i].images.fixed_height_still.url;
-
-            // Creating an element to have the gif displayed
-            var pOne = $("<img>").attr("src", gif);
-            
-            // Displaying the gif
-            emotionDiv.append(pOne);
-
-
-            // Storing the rating data
-            var rating = response.data[i].rating;
-
-            // Creating an element to have the rating displayed
-            var pTwo = $("<p>").text("Rating: " + rating);
-
-            // Displaying the rating
-            emotionDiv.append(pTwo);
-
-            $("#gifContainer").prepend(emotionDiv);
-
-
-            
+            $("<p/>").addClass("ratings").text("Rating: " + results[i].rating
+                .toUpperCase())
+                .prependTo("#gifContainer");
+            $("<img>").addClass("gif")
+                .attr("src", results[i].images.fixed_height_still.url)
+                .attr("data-still", results[i].images.fixed_height_still.url)
+                .attr("data-animate", results[i].images.fixed_height.url)
+                .attr("data-state", "still")
+                .prependTo("#gifContainer");
 
         }
-
     });
 
 });
-        //$('#emotion-input').empty();
-        //var searchDiv = $('<div class= "card" id= "search-item">');
 
-        // Appending the image
-        //emotionDiv.append(image);
 
-        // Putting the entire emotion above the previous emotions
-        //$("#movies-view").prepend(movieDiv)
+$(".gif").on('click', '.emotion', function() {
+    // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+    var state = $(this).attr("data-state");
+    // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+    // Then, set the image's data-state to animate
+    // Else set src to the data-still value
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+});

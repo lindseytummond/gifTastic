@@ -19,26 +19,50 @@
 </head>
 
 <body>
-    <div class="container">
+
         <!--Title-->
-        <h1>Stages of Emotions while Learning to Code</h1>
-        
-        <!--Emotions Buttons-->
-        <div id="buttons-view"></div>
-        
-        <form id="emotion-form">
-            <!--Input Button-->
-            <label for="emotion-input">Type a Coding Emotion:</label>
-            <input type="text" id="emotion-input"><br>
-        
-            <!--Button triggers new emotion to be added-->
-            <input id="add-emotion" type="submit" value="Add a Coding Emotion">
-        </form>
+        <div class="jumbotron">
+            <h1>Stages of Emotions while Learning to Code</h1>
+        </div>
 
-        <!--Gifs-->
-        <div id="gifContainer" class="col-md-12 text-center"></div>
+        <!--Video and Emotion-Search Input-->
+        <div class="container" id="search">
+            <div class="row">
+                <!--Video-->
+              <div class="col-md-7" id="video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/G_Z3lmidmrY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
 
-    </div>
+              <!--Input Button-->
+              <div class="col-md-5" id="emotion-column">
+                    <form id="emotion-form">
+
+                        <label for="emotion-input">Type a Coding Emotion:</label>
+                        <input type="text" id="emotion-input"><br>
+            
+                        <!--Button triggers new emotion to be added-->
+                        <input id="add-emotion" type="submit" value="Add a Coding Emotion">
+                    </form>
+
+                    <br>
+
+                    <!--Emotions Buttons-->
+                    <div id="buttons-view"></div>
+              </div>
+            
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-align-center" id="gifContainer"></div>
+            </div>
+        </div>
+
+
+        
+    
+
     <script src="assets/javascript/app.js"></script>
 </body>
 </html>

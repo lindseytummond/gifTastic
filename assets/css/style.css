@@ -1,6 +1,30 @@
-    button,
-    div,
-    form,
-    input {
-      margin: 10px;
-    }
+button, form, input {
+    margin: 10px;
+}
+
+
+
+.jumbotron {
+  text-align: center;
+}
+
+ body {
+   background-image: url(../css/oriental-tiles/oriental-tiles.png);
+    margin: 10px;
+    border-radius: 5px;
+} 
+
+#video {
+  ;
+}
+
+#emotion-column{
+  background-color: purple;
+
+}
+
+#btn{
+  margin: 0px, auto;
+  
+}
+
