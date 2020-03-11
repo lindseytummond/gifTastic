@@ -46,6 +46,7 @@ renderButtons();
 // displayEmotionInfo function re-renders the HTML to display the appropriate content
 
 $(document).on('click', '.emotion', function (){
+    $('#gifContainer').empty();
     var emotion = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=RHuh2HxJ0HyjttXzUCPTpHYqfilmC3Vy&limit=10";
     
@@ -60,34 +61,51 @@ $(document).on('click', '.emotion', function (){
 
         var results = response.data;
         for (var i = 0; i < response.data.length; i++) {
-            
-            $("<p/>").addClass("ratings").text("Rating: " + results[i].rating
-                .toUpperCase())
-                .prependTo("#gifContainer");
-            $("<img>").addClass("gif")
-                .attr("src", results[i].images.fixed_height_still.url)
-                .attr("data-still", results[i].images.fixed_height_still.url)
-                .attr("data-animate", results[i].images.fixed_height.url)
-                .attr("data-state", "still")
-                .prependTo("#gifContainer");
 
+            //display gif images and ratings
+            $('#emotion-input').empty();
+            var searchDiv = $('<div class= "test1" id= "test2">');
+            var rating = response.data[i].rating;
+            var p = $('<p>').text('Rating: ' + rating .toUpperCase());
+
+            
+            //variable for gif while moving
+            var animated = response.data[i].images.fixed_height.url;
+
+            // variable for gif while still
+            var still = response.data[i].images.fixed_height_still.url;
+
+            //assiging attributes to image to make into gif
+            var image = $('<img>');
+            image.attr('src', still);
+            image.attr('data-still', still);
+            image.attr('data-animated', animated);
+            image.attr('data-state', 'still');
+            image.addClass('searchImage');
+
+            //attaching rating to bottom of div
+            searchDiv.append(p);
+            //attaching image to top of div
+            searchDiv.prepend(image);
+            $('#gifContainer').append(searchDiv);
         }
     });
 
 });
 
 
-$(".gif").on('click', '.emotion', function() {
+$(document).on('click', '.searchImage', function() {
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
     var state = $(this).attr("data-state");
     // If the clicked image's state is still, update its src attribute to what its data-animate value is.
     // Then, set the image's data-state to animate
     // Else set src to the data-still value
-    if (state === "still") {
-      $(this).attr("src", $(this).attr("data-animate"));
-      $(this).attr("data-state", "animate");
+    console.log('hello')
+    if (state == 'still') {
+        $(this).attr('src', $(this).data('animated'));
+        $(this).attr('data-state', 'animated');
     } else {
-      $(this).attr("src", $(this).attr("data-still"));
-      $(this).attr("data-state", "still");
+        $(this).attr('src', $(this).data('still'));
+        $(this).attr('data-state', 'still');
     }
 });
