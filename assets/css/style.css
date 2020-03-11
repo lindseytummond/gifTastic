@@ -3,22 +3,25 @@ body {
    margin: 10px;
    border-radius: 5px;
    cursor: pointer;
+   font-family: 'Bellota Text', cursive;
+   font-weight: bolder;
 } 
 
 .jumbotron {
   text-align: center;
+  background-color: transparent;
+  color: #F4D06F;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 
 #video {
-  ;
+  border-radius: 4%;
 }
 
 form {
   margin: px;
   font-size: 20px;
-  color: beige;
-  
 }
 
 label {
@@ -28,28 +31,50 @@ label {
 #add-emotion {
   color: #F4D06F;
   background-color: #684756;
-  width: 80%;
- 
+  width: 20%;
 }
 
 input {
-  margin: 10px;
+  margin: auto 15px;
 }
 
 button {
-  margin: 15px;
+  margin-bottom: 15px;
   color: #F4D06F;
   background-color: #282829;
   width: 80%;
   font-size: 20px;
-
+  border-radius: 4%;
 }
 
-#emotion-column{
-  background-color;
+
+p {
+  color: #F4D06F;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+img{
+  border-radius: 4%;
+}
+
+@media (min-width: 576px) {
   
 }
 
-#gifContainer{
-  background-color: yellowgreen;
+
+@media (min-width: 768px) {
+  iframe {
+    width: 510px;
+    height: 265;
+  }
+}
+
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
 }
