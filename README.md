@@ -3,7 +3,7 @@
 ### Overview:
 
 GIPHY API to make a dynamic web page that populates with gifs of your choice. 
-To finish this task, you must call the GIPHY API and use JavaScript and jQuery to change the HTML of your site.
+You must call the GIPHY API and use JavaScript and jQuery to change the HTML.
 Other resources: CSS, Bootstrap, GoogleFonts
 
 ### Link to game: https://lindseytummond.github.io/gifTastic/
@@ -18,7 +18,7 @@ Other resources: CSS, Bootstrap, GoogleFonts
 
 4. When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
 
-5. Under every gif, display its rating (PG, G, so on).
+5. Under every gif, display its rating (PG, G, etc).
   
 6. Add a form to your page that takes a value from a user input box and adds it to your array. Then make a function call that takes each topic in the array and remakes the buttons on the page.
 
