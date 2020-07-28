@@ -39,5 +39,5 @@ Use the following link https://lindseytummond.github.io/gifTastic/ to open the a
 
 ## App Example:
 <p align="center">
-  <img src="assets/images/trivia-readme.gif">
+  <img src="assets/images/giftastic-readme.gif">
 </p>
